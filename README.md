@@ -29,3 +29,19 @@ iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 // Permitir conexões HTTP e HTTPS de entrada:
 iptables -A INPUT -p tcp --dport 90 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+
+// Permitir conexões estabelecidas e relacionadas de entrada
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+// Bloquear todo o tráfego de entrada não solicitado
+iptables -A INPUT -j DROP
+
+// Permitir todo o tráfego de saída
+iptables -A OUTPUT -j ACCEPT
+
+// permitir conxões estabelecidas de saída
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+
+# Salvar regras para que sejam carregadas na inicialização:
+
+iptables-save > /etc/iptables/rules.v4
