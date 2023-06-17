@@ -14,4 +14,18 @@ ele e usado para cotrolar as regras de filtragem de pacotes em um sistemas basea
 
 iptables usa uma série de chains (cadeias) predefinidas, como INPUT, OUTPUT,FOWARD, para organizar e processar os pacotes de acordo com as regras definidas pelo usuário.
 
-# 
+# Regras
+
+// Limpar todas as regras existentes:
+iptables -F
+
+// permitir tráfego de loopback (o localhost)
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
+// permitir conexões SSH de entrada:
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+// Permitir conexões HTTP e HTTPS de entrada:
+iptables -A INPUT -p tcp --dport 90 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
