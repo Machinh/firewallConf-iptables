@@ -1,3 +1,4 @@
+https://media.tenor.com/apaLlyjoPuYAAAAi/dinkdonk-emote.gif
 # usando o iptables:
 
 Hllo! basicamente o iptables é uma ferramenta/firewall em nível de pacotes que já vêm por padrão nos sistemas operacionais, mesmo que seja versão minimal
